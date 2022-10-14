@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->"
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'fonts/material-icon\css\material-design-iconic-font.min.css'%}">
+    <link rel="stylesheet" href="{% static 'vendor/nouislider/nouislider.min.css'%}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+
+<body style="padding: 0px ; margin:0px">
+    <nav class="navbar navbar-expand-lg " style=" background-color:#0c605c ;margin-top: -25px;"> 
+        <div class="container-fluid " >
+            <img src="{%static 'images/logo1.png'%}" alt="" style="width:5%;" class="mx-5">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto ">
+                    <a href="/home" class="nav-link mx-4   active" aria-current="page" href="#" style="color:#d1eccc; font-weight: bold;">Home</a>
+                    <a href="/pc"class="nav-link mx-4  " href="#"  style="color:#d1eccc; font-weight: bold;">pc</a>
+                    <a href="/phones"class="nav-link mx-4  " href="#" style="color:#d1eccc; font-weight: bold;">Phones</a>
+                    <a href="/electronicTool" class="nav-link mx-4   "  style="color:#d1eccc; font-weight: bold;">Electronic Accessories </a>
+                    <a href="/about_us" class="nav-link mx-4   "
+                        style="color:#d1eccc; font-weight: bold;">about us </a>
+                </div>
+                <a href="/reg"> <button type="button" class="btn btn-light">sign up</button></a>
+                <a href="/login"> <button type="button" class="btn btn-danger ms-3 me-5">sign in</button></a>
+            </div>
+        </div>
+    </nav>
+    {% if messages %}
+       
+    {% for message in messages %}    
+        <p >{{ message }}</p>    
+    {% endfor %}
+
+{% endif %}
+    <div class="main">
+    
+
+
+        <div class="container">
+        
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="{% static 'images/pexels-photo-9072251.jpeg'%}" alt="" style="height:80% ;">
+                    <div class="signup-img-content">
+                        <h2>Register now </h2>
+                        <img src="C:\Users\ابداع\Desktop\marketsite\app1\templates\logo.png" alt="logo" style="width:50% ;">
+                    
+                    </div>
+                </div>
+                <div class="signup-form">
+                   
+
+                    <form method="post" class="register-form" id="register-form" action="regProc">
+                        {%csrf_token%}
+                        <div class="form-row">
+                            <div class="form-group">
+                                <div class="form-input">
+                                    <label for="first_name" class="required">First name</label>
+                                    <input type="text" name="first_name" id="first_name" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="last_name" class="required">Last name</label>
+                                    <input type="text" name="last_name" id="last_name" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="email" class="required">Email</label>
+                                    <input type="text" name="email" id="email" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="password" class="required">Password</label>
+                                    <input type="text" name="password" id="password" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="phone_number" class="required">Phone number</label>
+                                    <input type="text" name="phone_number" id="phone_number" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-select">
+                                    <div class="label-flex">
+                                        <label for="meal_preference">city</label>
+
+                                    </div>
+                                    <div class="select-list">
+                                        <select name="city" id="city">
+                                            <option value="nablus">nablus</option>
+                                            <option value="tulkarm">tulkarm</option>
+                                            <option value="ramallah">ramallah</option>
+                                            <option value="jenen">jenen</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-input">
+                                    <label for="region">region</label>
+                                    <input type="text" name="region" id="region" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="street">Street</label>
+                                    <input type="text" name="street" id="blank_name" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="building">Building</label>
+                                    <input type="text" name="building" id="building" />
+                                </div>
+                                <div class="form-input">
+                                    <label for="apartment">Department</label>
+                                    <input type="text" name="apartment" id="payable" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-submit">
+                            <input type="submit" value="Submit" class="submit" id="submit" name="submit" />
+                            <input type="submit" value="Reset" class="submit" id="reset" name="reset" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+   
+
+    <!-- JS -->
+    <script src="{% static 'vendor/jquery/jquery.min.js'%}"></script>
+    <script src="{% static 'vendor/nouislider/nouislider.min.js'%}"></script>
+    <script src="{% static 'vendor/wnumb/wNumb.js'%}"></script>
+    <script src="{% static 'vendor/jquery-validation/dist/jquery.validate.min.js'%}"></script>
+    <script src="{% static 'vendor/jquery-validation/dist/additional-methods.min.js'%}"></script>
+    <script src="{% static 'js/main.js'%}"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>

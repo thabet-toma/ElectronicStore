@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {%load static%}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <style>
+        .card:hover {
+            transform: scale(1.2);
+        }
+
+        .card {
+            transition: transform .5s;
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<body class="bg-light bg-gradient">
+    <nav class="navbar navbar-expand-lg " style=" background-color:#0c605c">
+        <div class="container-fluid ">
+            <img src="{%static 'images/logo1.png'%}" alt="" style="width:5%;" class="mx-5">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto ">
+                    <a href="/home" class="nav-link mx-4   active" aria-current="page" href="#"
+                        style="color:#d1eccc; font-weight: bold;">Home</a>
+                    <a href="/pc" class="nav-link mx-4  " href="/pc" style="color:#d1eccc; font-weight: bold;">pc</a>
+                    <a href="/phones" class="nav-link mx-4  " href="/phones"
+                        style="color:#d1eccc; font-weight: bold;">Phones</a>
+                    <a href="/electronicTool" class="nav-link mx-4   "
+                        style="color:#d1eccc; font-weight: bold;">Electronic Accessories </a>
+                    <a href="/about_us" class="nav-link mx-4   "
+                        style="color:#d1eccc; font-weight: bold;">about us </a>
+                </div>
+                {% if user  %}
+                <p style="color:#d1eccc;" class="me-2 my-auto">{{user.first_name}} {{user.last_name}}</p>
+                <a href="/LOGOUT"> <button type="button" class="btn btn-light">logout</button></a>
+                
+                {% else %}
+                <a href="/reg"> <button type="button" class="btn btn-light">sign up</button></a>
+                <a href="/login"> <button type="button" class="btn btn-danger ms-3 me-5">sign in</button></a>
+                
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <form action="/filter" method="post" >
+        {% csrf_token %}
+    <div class="row align-items-center justify-content-center"><select class="form-select w-25 m-3" aria-label="Default select example" name="price">
+        <option selected value="99999-00000">select the price </option>
+        <option value="99999-03500">more than 3500</option>
+        <option value="03500-01500"> between 1500 and 3500</option>
+        <option value="01500-00000">less than 1500</option>
+    </select>
+    <select class="form-select w-25 m-3" aria-label="Default select example" name="model">
+        <option selected value="2030,2000">select the model </option>
+        <option value="2022,2018">after 2018</option>
+        <option value="2018,2005">between 2005 and 2018</option>
+        <option value="2005,2000">before than 2005</option>
+    </select>
+    <button type="submit" value="electronicTool"class="btn btn-danger" style="width:5%; height:5%" name="submit" >search</button> 
+</div>
+   
+</form>
+    <div class="  row container justify-content-evenly my-5">
+        {%for pro in all_product%}
+        {%if pro.categotry.category == "electronic"%}
+        <a  href="/show/{{pro.id}}"class="card text-bg-light mb-1 m-4 col-md-2 col-sm-1 " style="border: 1.5px solid #0c605c;"">
+            <img src="{%static 'images/pc-1.jpg'%}" class="card-img-top " alt="pc" style="width: 70%">
+            <div class="card-body">
+                
+                <p class="card-text">{{pro.name}}:{{pro.model_y}}</p>
+            </div>        
+            </a>
+            {%endif%}
+            {%endfor%}
+            </div>
+    </div>
+
+</body>
+
+</html>

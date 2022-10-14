@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<title>Login 10</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	{%load static%}
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+
+
+	<link rel="stylesheet" href="{%static 'css/style1.css'%}">
+
+</head>
+
+<body class="img js-fullheight" style="background-image: url('{% static 'images/background.jpg'%}');">
+	<nav class="navbar navbar-expand-lg " style=" background-color:#0c605c">
+        <div class="container-fluid " >
+            <img src="{%static 'images/logo1.png'%}" alt="" style="width:5%;" class="mx-5">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto ">
+                    <a href="/home" class="nav-link mx-4   active" aria-current="page" href="#" style="color:#d1eccc; font-weight: bold;">Home</a>
+                    <a href="/pc"class="nav-link mx-4  " href="#"  style="color:#d1eccc; font-weight: bold;">pc</a>
+                    <a href="/phones"class="nav-link mx-4  " href="#" style="color:#d1eccc; font-weight: bold;">Phones</a>
+                    <a href="/electronicTool" class="nav-link mx-4   "  style="color:#d1eccc; font-weight: bold;">Electronic Accessories </a>
+					<a href="/about_us" class="nav-link mx-4   "
+                        style="color:#d1eccc; font-weight: bold;">about us </a>
+                </div>
+                <a href="/reg"> <button type="button" class="btn btn-light">sign up</button></a>
+                <a href="/login"> <button type="button" class="btn btn-danger ms-3 me-5">sign in</button></a>
+            </div>
+        </div>
+    </nav>
+	{% if messages %}
+       
+    {% for message in messages %}    
+        <p  style="color:red; text-align:center;font-weight:bold">{{ message }}</p>    
+    {% endfor %}
+
+{% endif %}
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-6 text-center mb-5">
+					<h2 class="heading-section">Login </h2>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+					<div class="login-wrap p-0">
+						<h3 class="mb-4 text-center">Have an account?</h3>
+						<form action="/loginPro" class="signin-form" method="post">
+							{%csrf_token%}
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="email" required name="email">
+							</div>
+							<div class="form-group">
+								<input id="password-field" type="password" class="form-control" placeholder="Password"
+									required name="password">
+								<span toggle="#password-field"
+									class="fa fa-fw fa-eye field-icon toggle-password"></span>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+							</div>
+							
+						</form>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<script src="{%static 'js/jquery.min1.js'%}"></script>
+	<script src="{%static 'js/popper1.js'%}"></script>
+	<script src="{%static 'js/bootstrap.min1.js'%}"></script>
+	<script src="{%static 'js/main1.js'%}"></script>
+
+</body>
+
+</html>

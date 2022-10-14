@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Document</title>
+
+    <style>
+        .b {
+            
+            margin-left: 50%;
+            width: 29rem;
+            font-size: 20px;
+           
+            color:green;
+            text-align: center;
+            border-radius: 5%;
+        }
+        .nobuy {
+            
+            margin-left: 50%;
+            width: 29rem;
+            font-size: 20px;
+
+            color:red;
+            text-align: center;
+            border-radius: 5%;
+        }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{%static 'css/style.css'%}">
+
+
+</head>
+
+<body class='bg-light' style="padding: 0px;">
+
+    <nav class="navbar navbar-expand-lg " style=" background-color:#0c605c">
+        <div class="container-fluid ">
+            <img src="{%static 'images/logo1.png'%}" alt="" style="width:5%;" class="mx-5">
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto ">
+                    <a href="/home" class="nav-link mx-4   active" aria-current="page" href="#"
+                        style="color:#d1eccc; font-weight: bold;">Home</a>
+                    <a href="/pc" class="nav-link mx-4  " href="#" style="color:#d1eccc; font-weight: bold;">pc</a>
+                    <a href="/phones" class="nav-link mx-4  " href="#"
+                        style="color:#d1eccc; font-weight: bold;">Phones</a>
+                    <a href="/electronicTool" class="nav-link mx-4   "
+                        style="color:#d1eccc; font-weight: bold;">Electronic Accessories </a>
+                    <a href="/about_us" class="nav-link mx-4   " style="color:#d1eccc; font-weight: bold;">about us </a>
+                </div>
+                {% if user %}
+                <p style="color:#d1eccc;" class="me-2 my-auto">{{user.first_name}} {{user.last_name}}</p>
+                <a href="/LOGOUT"> <button type="button" class="btn btn-light">logout</button></a>
+
+                {% else %}
+
+                <a href="/reg"> <button type="button" class="btn btn-light">sign up</button></a>
+                <a href="/login"> <button type="button" class="btn btn-danger ms-3 me-5">sign in</button></a>
+
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="  justify-content-between align-center" ;>
+        <br>
+        <h1 style=" margin-left: 3%; ">{{product.name}}</h1>
+        <br>
+        <div class="distract row justify-content-start  align-items-start " style="display:flex ;">
+            <img src="{% static 'images/pexels-photo-7858743.jpeg' %}" class=" col-2 m-1 "
+                style="width:30% ; margin-left: 3%;">
+            <div class="col-8">
+                <h2 class="text-danger text-center ">model:{{product.model_y}} </h2>
+                <h3 class="text-center text-primary ">price:{{product.price}} </h3>
+
+                <p class="mx-auto mx-4 mb-0  text-primary" style="border:1px solid green  ; text-align: left; width: 40vw ;height: 20vh;">{{product.description}}</p>
+                <form id="formPost" method="post" class=" col-2 mx-auto mt-2">
+                    {%csrf_token%}
+                    <button type="submit" id="id" value="{{product.id}}" class="btn   btn-dark   "
+                        style="width: 150px;   margin-bottom: 2%; "> Buy</button>
+            </div>
+            
+       
+        </div>
+
+
+     
+       
+        
+        
+
+        </form>
+        <p  class="Buy " ></p>
+    
+
+    </div>
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+    <script type="text/javascript">
+        x=document.querySelector('.Buy')
+        $(document).on('submit', '#formPost', function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: 'POST',
+                url: "/add_order",
+                data: {
+                    id: $('#id').val(),
+                    csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
+
+                },
+                success: function (data) {
+                    x.classList.add("b")
+                    x.classList.remove("nobuy")
+                    x.innerText="Your purchase has been successfully completed. You will receive your order within a maximum of two days"
+                },
+                error: function () {
+                    x.classList.add("nobuy")
+                    x.classList.remove("b")
+                    x.innerHTML="Please register on our website so you  can  purchase our products<a href='/reg'> sin up here</a>"
+                },
+            });
+            });
+
+    </script>
+</body>
+
+</html>

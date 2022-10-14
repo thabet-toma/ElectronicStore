@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+        {%load static%}
+        <link rel="stylesheet" href="{%static 'css/style_about_us.css'%}">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous"> 
+</head>
+<body class="lable">
+    <nav class="navbar navbar-expand-lg " style=" background-color:#0c605c">
+        <div class="container-fluid " >
+            <img src="{%static 'images/logo1.png'%}" alt="" style="width:5%;" class="mx-5">
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav mx-auto ">
+                    <a href="/home" class="nav-link mx-4   active" aria-current="page" href="#" style="color:#d1eccc; font-weight: bold;">Home</a>
+                    <a href="/pc"class="nav-link mx-4  " href="#"  style="color:#d1eccc; font-weight: bold;">pc</a>
+                    <a href="/phones"class="nav-link mx-4  " href="#" style="color:#d1eccc; font-weight: bold;">Phones</a>
+                    <a href="/electronicTool" class="nav-link mx-4   "  style="color:#d1eccc; font-weight: bold;">Electronic Accessories </a>
+                    <a href="/about_us" class="nav-link mx-4   "
+                    style="color:#d1eccc; font-weight: bold;">about us </a>
+                </div >
+            </div>
+                {% if user %}
+                <p style="color:#d1eccc;" class="me-2 my-auto">{{user.first_name}} {{user.last_name}}</p>
+                <a href="/LOGOUT"> <button type="button" class="btn btn-light">logout</button></a>
+                
+                {% else %}
+            
+                <a href="/reg"> <button type="button" class="btn btn-light ">sign up</button></a>
+                <a href="/login"> <button type="button" class="btn btn-danger ms-3 me-5">sign in</button></a>
+                
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <div class="cont mt-5 ">
+        <div class="col1">
+        <h1 class="m-0 ">WHO WE ARE</h1>
+        <h4 class="m-2 p-0">Welcome To Electronic Store</h4>
+        <p class="m-2 " style="font-weight:bold;">We are building communities to create best economic opportunity for all</p>
+    <p class="m-2"> At Electronic Store, we create pathways to connect many buyers in all the area of Palestine. Our technology and items empowers our customers, providing everyone the needed they want to improve their skills — no matter who they are or where they are in Palestine. And the ripple effect of our work creates waves of change for our customers, our company, our communities.</p>
+        </div>
+        <img src="{% static 'images/building-a-high-performing-team-updated-RS14464-compressor-1.jpg'%}" alt="error">
+    </div>
+    <div class="lable3 align-items-start">
+        <img class="lable1" src="{% static 'images/mail.png'%}" alt="mail">
+        <p>electronic_store@gmail.com</p>
+        <img class="lable4 align-items-start" src="{% static 'images/lovepik-phone-icon-png-image_401452236_wh1200.png'%}" alt="phone">
+        <p>+972-2-2987654</p>
+        <img class="lable2 align-items-start" src="{% static 'images/location.png'%}" alt="location">
+        <p>Ramallah, Palestine</p>
+    </div>
+</body>
+</html>
