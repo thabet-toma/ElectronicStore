@@ -88,7 +88,7 @@
                 <h2 class="text-danger text-center ">model:{{product.model_y}} </h2>
                 <h3 class="text-center text-primary ">price:{{product.price}} </h3>
 
-                <p class="mx-auto mx-4 mb-0  text-primary" style="border:1px solid green  ; text-align: left; width: 40vw ;height: 20vh;padding: 10px;">{{product.description}}</p>
+                <h3 class="mx-auto mx-4 mb-0  text-primary" style="border:1px solid green  ; text-align: left; width: 40vw ;height: 20vh;padding: 10px;">{{product.description}}</h3>
                 <form id="formPost" method="post" class=" col-2 mx-auto mt-2">
                     {%csrf_token%}
                     <button type="submit" id="id" value="{{product.id}}" class="btn   btn-dark   "

@@ -16,6 +16,7 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="{% static 'css/style.css'%}">
+  
 </head>
 
 <body style="padding: 0px ; margin:0px">
@@ -59,7 +60,7 @@
                     <img src="{% static 'images/pexels-photo-9072251.jpeg'%}" alt="" style="height:80% ;">
                     <div class="signup-img-content">
                         <h2>Register now </h2>
-                        <img src="C:\Users\ابداع\Desktop\marketsite\app1\templates\logo.png" alt="logo" style="width:50% ;">
+                    
                     
                     </div>
                 </div>
@@ -84,7 +85,7 @@
                                 </div>
                                 <div class="form-input">
                                     <label for="password" class="required">Password</label>
-                                    <input type="text" name="password" id="password" />
+                                    <input type="password" name="password" id="password" />
                                 </div>
                                 <div class="form-input">
                                     <label for="phone_number" class="required">Phone number</label>
@@ -92,19 +93,21 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label for="meal_preference">city</label>
                                 <div class="form-select">
-                                    <div class="label-flex">
-                                        <label for="meal_preference">city</label>
+                                    
+                                    <!-- <div class="label-flex">
+                                
 
-                                    </div>
-                                    <div class="select-list">
-                                        <select name="city" id="city">
+                                    </div> -->
+                                
+                                        <select name="city" id="city"  class="select-list mb-0" >
                                             <option value="nablus">nablus</option>
                                             <option value="tulkarm">tulkarm</option>
                                             <option value="ramallah">ramallah</option>
                                             <option value="jenen">jenen</option>
                                         </select>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="form-input">
