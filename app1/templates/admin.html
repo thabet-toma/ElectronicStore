@@ -108,6 +108,7 @@
             </tbody>
                 
                 {% for i in all_products %}
+                {%if i.quantity != 0%}
                 <tr>
                 
                     <td> {{i.name}}</td>
@@ -116,6 +117,7 @@
                     <td> {{i.quantity}}</td>
                    
                 </tr>
+                {%endif%}
                 {% endfor %}
             </table>
         </div>

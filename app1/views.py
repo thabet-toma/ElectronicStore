@@ -211,6 +211,9 @@ def add_order(request):
 def isDeliver(request):
     x=orders.objects.get(id=request.POST['id'])
     x.state=True
+    y=x.product
+    y.quantity-=1
+    y.save()
     x.save()
     
     return redirect('/pro123')
@@ -241,9 +244,7 @@ def about_us(request):
     return render (request,'about_us.html',{'user':user1})
 def deleteOrder(request):
     x=orders.objects.get(id=request.POST['id'])
-    y=x.product
-    y.quantity-=1
-    y.save()
+   
     
 
     
