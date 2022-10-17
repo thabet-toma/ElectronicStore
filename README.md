@@ -1,4 +1,4 @@
-# **IPEKYOLU** 
+# **ELECTRONI STORE** 
 
 ## Table of Contents
 * [Run Localy](#run-localy)
