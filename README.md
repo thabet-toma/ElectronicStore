@@ -1,4 +1,4 @@
-# **ELECTRONI STORE** 
+# **ELECTRONIC STORE** 
 
 ## Table of Contents
 * [Run Localy](#run-localy)
